@@ -49,5 +49,52 @@
                 "correct": "koira"
             }
         ]
+    },
+    "dinosaurs": {
+        "title": "Dinosaurukset",
+        "questions": [
+            {
+                "text": "Mikä dinosaurus on suurin?",
+                "correct": "diplodocus",
+                "choices": [
+                    {
+                        "text": "diplodocus",
+                        "slug": "diplodocus"
+                    },
+                    {
+                        "text": "Triceratops",
+                        "slug": "triceratops"
+                    },
+                    {
+                        "text": "Tyrannosaurus",
+                        "slug": "tyrannosaurus"
+                    },
+                    {
+                        "text": "Stegosaurus",
+                        "slug": "stegosaurus"
+                    },
+                    {
+                        "text": "Ankylosaurus",
+                        "slug": "ankylosaurus"
+                    }
+                ]
+            },
+            {
+                "text": "Millä dinosauruksella on kolme sarvea?",
+                "correct": "triceratops"
+            },
+            {
+                "text": "Mikä dinosaurus on vaarallisin?",
+                "correct": "tyrannosaurus"
+            },
+            {
+                "text": "Millä dinosauruksella on piikikäs häntä?",
+                "correct": "ankylosaurus"
+            },
+            {
+                "text": "Millä dinosauruksella on selässä kilpiä pystyssä?",
+                "correct": "stegosaurus"
+            }
+        ]
     }
 }
