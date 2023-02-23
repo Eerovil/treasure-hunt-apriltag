@@ -1,0 +1,50 @@
+{
+    "apriltagmappings": {
+        "0": "Jääkaappi",
+        "1": "Kylpyhuone",
+        "2": "Televisio",
+        "3": "Makuuhuone",
+        "4": "Olohuone",
+        "5": "Keittiö",
+        "6": "Kylpyhuone"
+    },
+    "animals": {
+        "title": "Eläinlajit",
+        "questions": [
+            {
+                "text": "Mikä eläin naukuu?",
+                "correct": "kissa",
+                "choices": [
+                    {
+                        "text": "Koira",
+                        "slug": "koira"
+                    },
+                    {
+                        "text": "Kissa",
+                        "slug": "kissa"
+                    },
+                    {
+                        "text": "Kana",
+                        "slug": "kana"
+                    },
+                    {
+                        "text": "Karhu",
+                        "slug": "karhu"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä eläin kotkottaa?",
+                "correct": "kana"
+            },
+            {
+                "text": "Mikä eläin murisee?",
+                "correct": "karhu"
+            },
+            {
+                "text": "Mikä eläin haukkuu?",
+                "correct": "koira"
+            }
+        ]
+    }
+}

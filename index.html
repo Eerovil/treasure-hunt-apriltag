@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instascan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no">
+    <link rel="manifest" href="/static/manifest.json">
+    <script src="https://unpkg.com/shake-detector"></script>
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+      window.defaultHunt = {
+    "apriltagmappings": {
+        "0": "Jääkaappi",
+        "1": "Kylpyhuone",
+        "2": "Televisio",
+        "3": "Makuuhuone",
+        "4": "Olohuone",
+        "5": "Keittiö",
+        "6": "Kylpyhuone"
+    },
+    "animals": {
+        "title": "Eläinlajit",
+        "questions": [
+            {
+                "text": "Mikä eläin naukuu?",
+                "correct": "kissa",
+                "choices": [
+                    {
+                        "text": "Koira",
+                        "slug": "koira"
+                    },
+                    {
+                        "text": "Kissa",
+                        "slug": "kissa"
+                    },
+                    {
+                        "text": "Kana",
+                        "slug": "kana"
+                    },
+                    {
+                        "text": "Karhu",
+                        "slug": "karhu"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä eläin kotkottaa?",
+                "correct": "kana"
+            },
+            {
+                "text": "Mikä eläin murisee?",
+                "correct": "karhu"
+            },
+            {
+                "text": "Mikä eläin haukkuu?",
+                "correct": "koira"
+            }
+        ]
+    }
+}
+</script>
+
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        text-align: center;
+        height: 100%;
+      }
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
+      #vue-app, .wrapper {
+        height: 100%;
+        font-size: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .stories {
+        display: flex;
+        flex-direction: column;
+      }
+      .stories button {
+        font-size: 5rem;
+        margin-bottom: 3rem;
+        padding: 1rem;
+      }
+      .all-correct {
+        width: 10rem;
+        fill: #34cb34;
+        margin-top: auto !important;
+        margin-bottom: 5rem !important;
+      }
+      .story {
+        margin-top: 3rem;
+        font-size: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .story .word-correct {
+        color: #34cb34;
+      }
+      .story .word {
+        margin-right: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="vue-app">
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+      const diagnostic = document.querySelector('.output');
+      const bg = document.querySelector('html');
+
+      let context = null;
+
+      const speak = (text) => {
+        console.log(text);
+        const utter = new SpeechSynthesisUtterance();
+        utter.lang = 'fi-FI';
+        utter.text = text;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utter);
+      }
+      if (window.speechSynthesis) {
+        speechSynthesis.getVoices();
+      }
+      let lastDetId = null
+      window.document.addEventListener('speak', (data) => speak(data.detail), false)
+
+    </script>
+    <template id="template">
+      <div v-if="!huntSelected" class="allHunts">
+        <button v-for="hunt in allHunts" @click="loadHunt(hunt)">{{ hunt.title }}</button>
+      </div>
+      <div v-else class="wrapper">
+        <div class="hunt">
+          <h2>{{ hunt.questions[huntIndex].text }}</h2>
+        </div>
+        <div v-for="choice in choices">
+          <button v-if="selectedChoice != choice.slug" @click="selectChoice(choice)">{{ choice.text }}</button>
+          <span v-else @click="unSelectChoice()">{{ choice.apriltag }}</span>
+        </div>
+      </div>
+    </template>
+    <script>
+      const { createApp } = Vue;
+    
+      createApp({
+        template: "#template",
+
+        data() {
+          return {
+            huntIndex: 0,
+            hunt: null,
+            huntSelected: false,
+            allHunts: {},
+            selectedChoice: null,
+            aprilTagMappings: {},
+          }
+        },
+        computed: {
+          choices() {
+            if (!this.hunt || !this.hunt.questions) {
+              return [];
+            }
+            const question = this.hunt.questions[this.huntIndex];
+            if (question.choices) {
+              return question.choices;
+            }
+            return this.hunt.questions[0].choices;
+          }
+        },
+        mounted() {
+          this.loadHunts();
+        },
+        methods: {
+          loadHunts() {
+            const url = "hunts.json"
+            try {
+              fetch(url)
+                .then(r => {
+                  if (!r.ok) {
+                    throw new Error("HTTP error " + r.status);
+                  }
+                  r.text().then(t => {
+                    this.loadHuntJSON(t);
+                  })
+                })
+                .catch(e => {
+                  console.error("err1", e);
+                  this.loadHuntJSON(
+                    JSON.stringify(window.defaultHunt)
+                  )
+                })
+            } catch (e) {
+              console.error("err2", e);
+              this.loadHuntJSON(
+                JSON.stringify(window.defaultHunt)
+              )
+            }
+          },
+          loadHuntJSON(t) {
+            const data = JSON.parse(t);
+            this.aprilTagMappings = JSON.parse(JSON.stringify(data.apriltagmappings));
+            delete data.apriltagmappings;
+            this.allHunts = data;
+          },
+          randomizeChoiceMappings() {
+            const mappings = JSON.parse(JSON.stringify(this.aprilTagMappings));
+            for (const choice of this.choices) {
+              const randomKey = Object.keys(mappings)[Math.floor(Math.random() * Object.keys(mappings).length)];
+              choice.apriltag = mappings[randomKey];
+              delete mappings[randomKey];
+            }
+          },
+          loadHunt(hunt) {
+            this.huntSelected = true;
+            this.hunt = hunt;
+            this.huntIndex = 0;
+            this.randomizeChoiceMappings();
+          },
+          nextQuestion() {
+            this.huntIndex++;
+            if (this.huntIndex >= this.hunt.questions.length) {
+              // Victory!
+              this.huntSelected = false;
+            } else {
+              if (this.hunt.questions[this.huntIndex].choices) {
+                this.randomizeChoiceMappings();
+              }
+            }
+          },
+          selectChoice(choice) {
+            this.selectedChoice = choice.slug;
+          },
+          unSelectChoice() {
+            this.selectedChoice = null;
+          },
+        },
+      }).mount('#vue-app')
+
+    </script>
+  </body>
+</html>
