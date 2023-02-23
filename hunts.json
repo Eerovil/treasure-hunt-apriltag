@@ -1,12 +1,15 @@
 {
     "apriltagmappings": {
-        "0": "Jääkaappi",
-        "1": "Kylpyhuone",
-        "2": "Televisio",
-        "3": "Makuuhuone",
-        "4": "Olohuone",
-        "5": "Keittiö",
-        "6": "Kylpyhuone"
+        "1": "Eteisessä",
+        "2": "Sohvan takana",
+        "3": "Savupiipussa",
+        "4": "Kodinhoitohuoneessa",
+        "6": "Telkkarin Luona",
+        "7": "Kuivausrummussa",
+        "8": "Einarin Huoneessa",
+        "10": "Makuuhuoneessa",
+        "11": "Valtterin huoneessa",
+        "12": "Vaatehuoneessa"
     },
     "animals": {
         "title": "Eläinlajit",
