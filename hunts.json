@@ -96,5 +96,102 @@
                 "correct": "stegosaurus"
             }
         ]
+    },
+    "soittimet": {
+        "title": "Soittimet",
+        "questions": [
+            {
+                "text": "Montako kieltä on kitarassa?",
+                "correct": "6",
+                "choices": [
+                    {
+                        "text": "3",
+                        "slug": "3"
+                    },
+                    {
+                        "text": "4",
+                        "slug": "4"
+                    },
+                    {
+                        "text": "5",
+                        "slug": "5"
+                    },
+                    {
+                        "text": "6",
+                        "slug": "6"
+                    },
+                    {
+                        "text": "7",
+                        "slug": "7"
+                    },
+                    {
+                        "text": "8",
+                        "slug": "8"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä näistä soittimista on suurin?",
+                "correct": "sello",
+                "choices": [
+                    {
+                        "text": "sello",
+                        "slug": "sello"
+                    },
+                    {
+                        "text": "viulu",
+                        "slug": "viulu"
+                    },
+                    {
+                        "text": "nokkahuilu",
+                        "slug": "nokkahuilu"
+                    },
+                    {
+                        "text": "kantele",
+                        "slug": "kantele"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä näistä soittimista on pienin?",
+                "correct": "nokkahuilu",
+                "choices": [
+                    {
+                        "text": "sello",
+                        "slug": "sello"
+                    },
+                    {
+                        "text": "viulu",
+                        "slug": "viulu"
+                    },
+                    {
+                        "text": "nokkahuilu",
+                        "slug": "nokkahuilu"
+                    },
+                    {
+                        "text": "kantele",
+                        "slug": "kantele"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä näistä on joululaulu",
+                "correct": "joulupuu",
+                "choices": [
+                    {
+                        "text": "Joulupuu on rakennettu",
+                        "slug": "joulupuu"
+                    },
+                    {
+                        "text": "vauhti kiihtyy",
+                        "slug": "vauhti kiihtyy"
+                    },
+                    {
+                        "text": "Ysäriboi",
+                        "slug": "ysariboi"
+                    }
+                ]
+            }
+        ]
     }
 }
