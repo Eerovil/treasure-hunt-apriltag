@@ -313,9 +313,10 @@
               } else {
                 speak("Väärin! Vastaus ei ole " + choice.text)
               }
-              break;
+              return;
             }
           }
+          speak("Väärä vastaus! " + tagMapping + " ei ole mitään.")
         }
       },
     }).mount('#vue-app')
