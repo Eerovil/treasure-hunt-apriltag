@@ -322,6 +322,30 @@
   <script type="text/javascript" src="/apriltag/main.js"></script>
   <script type="module" async src="/apriltag/video_process.js"></script>
   <script>
+    const beep = (freq = 320, duration = 100, vol = 5) => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.connect(gain);
+        oscillator.frequency.value = freq;
+        oscillator.type = "square";
+        gain.connect(context.destination);
+        gain.gain.value = vol * 0.01;
+        oscillator.start(context.currentTime);
+        oscillator.stop(context.currentTime + duration * 0.001);
+    }
+    const melody = (beeps) => {
+      context = new AudioContext();
+      let time = 0;
+      for (const _beep of beeps) {
+        if (!_beep[0]) {
+          // No freq, just add time
+        } else {
+          console.log("Beep", _beep, time);
+          setTimeout(() => beep(_beep[0], _beep[1]), time);
+        }
+        time += _beep[1];
+      }
+    }
     window.handleDetected = (det) => {
       const content = `${det.id}`
       if (content == lastDetId) {
