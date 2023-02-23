@@ -91,39 +91,19 @@
       align-items: center;
     }
 
-    .stories {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stories button {
-      font-size: 5rem;
+    button {
+      font-size: 4rem;
       margin-bottom: 3rem;
       padding: 1rem;
     }
 
-    .all-correct {
-      width: 10rem;
-      fill: #34cb34;
-      margin-top: auto !important;
-      margin-bottom: 5rem !important;
-    }
-
-    .story {
-      margin-top: 3rem;
+    .mapping {
       font-size: 4rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      padding: 1rem;
+      border: 1px solid black;
+      margin-bottom: 4rem;
     }
 
-    .story .word-correct {
-      color: #34cb34;
-    }
-
-    .story .word {
-      margin-right: 1rem;
-    }
   </style>
 </head>
 
@@ -199,7 +179,7 @@
       </div>
       <div v-for="choice in choices">
         <button v-if="selectedChoice != choice.slug" @click="selectChoice(choice)">{{ choice.text }}</button>
-        <span v-else @click="unSelectChoice()">{{ choice.apriltag }}</span>
+        <div class="mapping" v-else @click="unSelectChoice()">{{ choice.apriltag }}</div>
       </div>
     </div>
   </template>
