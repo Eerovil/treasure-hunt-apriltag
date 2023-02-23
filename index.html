@@ -276,6 +276,8 @@
           if (this.huntIndex >= this.hunt.questions.length) {
             // Victory!
             this.huntSelected = false;
+            this.hunt = null;
+            speak("Onneksi olkoon! Olet voittanut!")
           } else {
             if (this.hunt.questions[this.huntIndex].choices) {
               this.randomizeChoiceMappings();
