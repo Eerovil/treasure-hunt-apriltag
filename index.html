@@ -307,7 +307,10 @@
             if (choice.apriltag === tagMapping) {
               console.log("Detected tag", tagID, "for choice", choice.slug)
               if ((this.hunt.questions[this.huntIndex] || {}).correct == choice.slug) {
+                speak("Oikein! Vastaus on " + choice.text)
                 this.nextQuestion();
+              } else {
+                speak("Väärin! Vastaus ei ole " + choice.text)
               }
               break;
             }
