@@ -192,5 +192,115 @@
                 ]
             }
         ]
+    },
+    "tietovisa": {
+        "title": "Tietovisa",
+        "questions": [
+            {
+                "text": "Mikä kukka on Suomen kansalliskukka?",
+                "correct": "kielo",
+                "choices": [
+                    {
+                        "text": "ruusu",
+                        "slug": "ruusu"
+                    },
+                    {
+                        "text": "tulppaani",
+                        "slug": "tulppaani"
+                    },
+                    {
+                        "text": "lilja",
+                        "slug": "lilja"
+                    },
+                    {
+                        "text": "auringonkukka",
+                        "slug": "auringonkukka"
+                    },
+                    {
+                        "text": "kielo",
+                        "slug": "kielo"
+                    }
+                ]
+            },
+            {
+                "text": "Kuinka monta sormea on kahdella kädellä yhteensä?",
+                "correct": "10",
+                "choices": [
+                    {
+                        "text": "5",
+                        "slug": "5"
+                    },
+                    {
+                        "text": "8",
+                        "slug": "8"
+                    },
+                    {
+                        "text": "10",
+                        "slug": "10"
+                    },
+                    {
+                        "text": "12",
+                        "slug": "12"
+                    },
+                    {
+                        "text": "20",
+                        "slug": "20"
+                    }
+                ]
+            },
+            {
+                "text": "Mitä soitinta Mozart soitti?",
+                "correct": "piano",
+                "choices": [
+                    {
+                        "text": "kitara",
+                        "slug": "kitara"
+                    },
+                    {
+                        "text": "viulu",
+                        "slug": "viulu"
+                    },
+                    {
+                        "text": "rummut",
+                        "slug": "rummut"
+                    },
+                    {
+                        "text": "trumpetti",
+                        "slug": "trumpetti"
+                    },
+                    {
+                        "text": "piano",
+                        "slug": "piano"
+                    }
+                ]
+            },
+            {
+                "text": "Mikä on todella kova ja kiiltävä kivi, jota käytetään usein koruissa?",
+                "correct": "timantti",
+                "choices": [
+                    {
+                        "text": "kulta",
+                        "slug": "kulta"
+                    },
+                    {
+                        "text": "hopea",
+                        "slug": "hopea"
+                    },
+                    {
+                        "text": "topaasi",
+                        "slug": "topaasi"
+                    },
+                    {
+                        "text": "turkoosi",
+                        "slug": "turkoosi"
+                    },
+                    {
+                        "text": "timantti",
+                        "slug": "timantti"
+                    }
+                ]
+            }
+        ]
+
     }
 }
